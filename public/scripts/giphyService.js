@@ -1,5 +1,5 @@
 app.service('giphyService', function ($http) {
-  var API = "http://api.giphy.com/v1/";
+  var API = "https://api.giphy.com/v1/";
   var params = {params: {api_key: 'dc6zaTOxFJmzC'}};
 
 
