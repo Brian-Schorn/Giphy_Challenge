@@ -46,5 +46,6 @@ module.exports = function(grunt){
 
   //declaring default tasks
   grunt.registerTask('default', ['clean', 'uglify', 'copy']);
+  grunt.registerTask('heroku', ['clean', 'uglify', 'copy']);
 
 }
