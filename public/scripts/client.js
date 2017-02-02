@@ -1,6 +1,6 @@
 var app = angular.module('giphyApp', []);
 
-app.controller('giphyController', function(giphyService){
+app.controller('giphyController',['giphyService', function(giphyService){
   console.log("giphyController Loaded");
 
   var ctrl = this;
@@ -47,4 +47,4 @@ ctrl.searchGIF = function(searchTerm) {
   //   });
   // }
 
-});
+}]);

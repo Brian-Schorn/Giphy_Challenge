@@ -1,4 +1,4 @@
-app.service('giphyService', function ($http) {
+app.service('giphyService',['$http', function ($http) {
   var API = "https://api.giphy.com/v1/";
   var params = {params: {api_key: 'dc6zaTOxFJmzC'}};
 
@@ -47,4 +47,4 @@ app.service('giphyService', function ($http) {
   //   })
   // };
 
-});
+}]);
