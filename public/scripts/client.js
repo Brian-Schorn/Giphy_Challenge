@@ -1,10 +1,13 @@
 var app = angular.module('giphyApp', []);
 
-app.controller('giphyController',['giphyService', function(giphyService){
+app.controller('giphyController',['giphyService', 'favService', function(giphyService, favService){
   console.log("giphyController Loaded");
 
   var ctrl = this;
 
+  favService.getList().then(function(list){
+    ctrl.numberOf = Object.keys(list).length;
+  });
   ctrl.randomGIF = function () {
     console.log("Random GIF Request");
     giphyService.randomGIF().then(function(gif){
@@ -26,7 +29,9 @@ app.controller('giphyController',['giphyService', function(giphyService){
     console.log("Favorite Request, Comment:", favComment, gifURL)
     giphyService.favGIF(favComment, gifURL
     );
-
+    favService.getList().then(function(list){
+      ctrl.numberOf = Object.keys(list).length;
+    });
   }
 
 }]);
@@ -36,8 +41,9 @@ app.controller('favoritesController', ['favService', function(favService){
   var ctrl = this;
 
   favService.getList().then(function(list){
+    ctrl.numberOf = Object.keys(list).length;
     ctrl.faveList = list;
-    console.log(list);
+    console.log("list:",Object.keys(list).length);
   });
 
 

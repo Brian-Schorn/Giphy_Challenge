@@ -14,7 +14,9 @@
     <main ng-controller="favoritesController as favCtrl">
       <h1>FAVORITES!</h1>
 
-      <button ng-click="giphyCtrl.randomGIF()">Random!</button>
+      <p>
+        You Have {{favCtrl.numberOf}} favorite GIFS
+      </p>
       <table name="FavoriteGifsTable">
         <thead>
           <th>
@@ -52,7 +54,7 @@
         </form>
       </p> -->
 
-      <a href="/index.html">Home!</a>
+      <a href="/">Home!</a>
     </main>
   </body>
 </html>
