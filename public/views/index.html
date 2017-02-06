@@ -17,15 +17,19 @@
       <button ng-click="giphyCtrl.randomGIF()">Random!</button>
 
       <form name="searchForm">
-        <input type="text" ng-model="giphyCtrl.searchTerm" placeholder="search term" ng-focus="highlight=true" ng-blur="highlight=false" required/>
-        <button ng-disabled="searchForm.$invalid" ng-click="giphyCtrl.searchGIF(giphyCtrl.searchTerm)" ng-class="{'highlightBad':highlight==true && searchForm.$invalid,'highlightGood':highlight==true && searchForm.$valid, 'normal':highlight==false}">Search!</button>
+        <input type="text" ng-model="giphyCtrl.searchTerm" placeholder="search term" ng-focus="highlightSearch=true" ng-blur="highlightSearch=false" required/>
+        <button ng-disabled="searchForm.$invalid" ng-click="giphyCtrl.searchGIF(giphyCtrl.searchTerm)" ng-class="{'highlightBad':highlightSearch==true && searchForm.$invalid,'highlightGood':highlightSearch==true && searchForm.$valid, 'normal':highlightSearch==false}">Search!</button>
       </form>
-      <p class="invalid" ng-show="searchForm.$invalid && highlight==true">
+      <p class="invalid" ng-show="searchForm.$invalid && highlightSearch==true">
         Fill in the search box Dummy!
       </p>
       <img ng-show="giphyCtrl.imageURL" ng-src="{{giphyCtrl.imageURL}}" alt="A Random Gif">
       <p ng-show="giphyCtrl.imageURL">
         GIF ID: {{giphyCtrl.imageName}}
+        <form name="favForm">
+          <input type="text" ng-model="giphyCtrl.comment" placeholder="comment" ng-focus="highlightComment=true" ng-blur="highlightComment=false" required/>
+          <button ng-disabled="favForm.$invalid" ng-click="giphyCtrl.favGIF(giphyCtrl.comment, giphyCtrl.imageURL)" ng-class="{'highlightBad':highlightComment==true && favForm.$invalid,'highlightGood':highlightComment==true && favForm.$valid, 'normal':highlightComment==false}">Favorite!</button>
+        </form>
       </p>
     </main>
   </body>

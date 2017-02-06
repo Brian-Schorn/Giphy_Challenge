@@ -15,6 +15,7 @@ app.controller('giphyController',['giphyService', function(giphyService){
       ctrl.imageURL = gif.data.image_url;
     });
   };
+  ctrl.randomGIF();
   //API KEYs , { params: { api_key: 'key goes here'}}
   // ctrl.randomGIF = function(){
   //   $http.get(API + "gifs/random", params).then(function(response){
@@ -46,5 +47,12 @@ ctrl.searchGIF = function(searchTerm) {
   //     console.log('img URL: ', ctrl.imageURL);
   //   });
   // }
+
+  ctrl.favGIF = function(favComment, gifURL) {
+    console.log("Favorite Request, Comment:", favComment, gifURL)
+    giphyService.favGIF(favComment, gifURL
+);
+
+  }
 
 }]);

@@ -24,6 +24,14 @@ app.service('giphyService',['$http', function ($http) {
       console.log('Error getting info from API after searching', err);
     });
   }
+
+  this.favGIF = function(favComment, gifURL){
+    var favoriteGIF = { url: gifURL,
+                        comment: favComment};
+    console.log(favoriteGIF);
+    $http.post('/favGif', favoriteGIF);
+
+  }
   //API KEYs , { params: { api_key: 'key goes here'}}
   // ctrl.randomGIF = function(){
   //   $http.get(API + "gifs/random", params).then(function(response){
