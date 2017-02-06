@@ -55,6 +55,24 @@ app.get('/favGif', function(req, res){
   );
 });
 
+app.delete('/favGif:id', function(req, res){
+  pool.connect(function(err, client, done){
+    if(err) {
+      console.log("Error connecting to DB: ", err);
+      res.sendStatus(500);
+      done();
+    } else {
+      client.query('DELETE FROM test WHERE id = $1', [req.params.id], function(err, result){
+        if (err) {
+          done();
+          console.log("Error deleting from DB: ", err);
+          res.sendStatus(500);
+        }
+      })
+    }
+  });
+});
+
 
 
 

@@ -25,6 +25,9 @@
           <th>
             Comment
           </th>
+          <th>
+            Delete!
+          </th>
         </thead>
         <tbody>
           <tr ng-repeat="gif in favCtrl.faveList">
@@ -33,6 +36,9 @@
             </td>
             <td>
               {{gif.commentfield}}
+            </td>
+            <td>
+              <button ng-click="favCtrl.deleteGif(gif.id)">Delete!</button>
             </td>
           </tr>
         </tbody>

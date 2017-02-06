@@ -9,6 +9,11 @@ app.service('favService',['$http', function ($http) {
     });
   };
 
+
+  this.deleteGif = function(id) {
+    console.log("ID:", id);
+    $http.delete('/favGif' + id);
+  }
   // this.favGIF = function(favComment, gifURL){
   //   var favoriteGIF = { url: gifURL,
   //                       comment: favComment};

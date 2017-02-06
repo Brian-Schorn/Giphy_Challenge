@@ -46,5 +46,15 @@ app.controller('favoritesController', ['favService', function(favService){
     console.log("list:",Object.keys(list).length);
   });
 
+  ctrl.deleteGif = function(id){
+    console.log('gif ID:', id);
+    favService.deleteGif(id);
+    favService.getList().then(function(list){
+      ctrl.numberOf = Object.keys(list).length;
+      ctrl.faveList = list;
+      console.log("list:",Object.keys(list).length);
+    });
+  }
+
 
 }]);
