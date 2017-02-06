@@ -18,3 +18,9 @@ body {
 .invalid {
   color: darkred;
 }
+
+table, td, th{
+  text-align: center;
+  margin: 0px auto;
+  border: 2px solid black;
+}

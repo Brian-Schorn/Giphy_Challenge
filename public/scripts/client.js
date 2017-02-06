@@ -5,9 +5,6 @@ app.controller('giphyController',['giphyService', function(giphyService){
 
   var ctrl = this;
 
-  // ctrl.searchTerm = '';
-
-
   ctrl.randomGIF = function () {
     console.log("Random GIF Request");
     giphyService.randomGIF().then(function(gif){
@@ -16,43 +13,32 @@ app.controller('giphyController',['giphyService', function(giphyService){
     });
   };
   ctrl.randomGIF();
-  //API KEYs , { params: { api_key: 'key goes here'}}
-  // ctrl.randomGIF = function(){
-  //   $http.get(API + "gifs/random", params).then(function(response){
-  //     console.log(response);
-  //     ctrl.imageName = response.data.data.id;
-  //     ctrl.imageURL = response.data.data.image_url;
-  //     console.log('img URL: ', ctrl.imageURL);
-  //   });
-  // };
 
-  // giphyService.searchGIF.then(function (gif){
-  //
-  // })
-
-ctrl.searchGIF = function(searchTerm) {
-  console.log("Search GIF Request", searchTerm);
-  giphyService.searchGIF(searchTerm).then(function(gif){
+  ctrl.searchGIF = function(searchTerm) {
+    console.log("Search GIF Request", searchTerm);
+    giphyService.searchGIF(searchTerm).then(function(gif){
       ctrl.imageName = gif.data[0].id;
       ctrl.imageURL = gif.data[0].images.original.url;
-  })
-}
-  // ctrl.searchGIF = function(){
-  //   params.params.q = ctrl.searchTerm.split(' ').join('+');
-  //   console.log(params.params.q);
-  //   $http.get(API + "gifs/search", params).then(function(response){
-  //     console.log(response);
-  //     ctrl.imageName = response.data.data[0].id;
-  //     ctrl.imageURL = response.data.data[0].images.original.url;
-  //     console.log('img URL: ', ctrl.imageURL);
-  //   });
-  // }
+    })
+  }
 
   ctrl.favGIF = function(favComment, gifURL) {
     console.log("Favorite Request, Comment:", favComment, gifURL)
     giphyService.favGIF(favComment, gifURL
-);
+    );
 
   }
+
+}]);
+
+app.controller('favoritesController', ['favService', function(favService){
+  console.log("favoritesController Loaded");
+  var ctrl = this;
+
+  favService.getList().then(function(list){
+    ctrl.faveList = list;
+    console.log(list);
+  });
+
 
 }]);

@@ -11,12 +11,32 @@
     <link rel="stylesheet" type="text/css" href="/views/mystyle.css">
   </head>
   <body ng-app="giphyApp">
-    <main ng-controller="giphyController as giphyCtrl">
-      <h1>GIFS!</h1>
+    <main ng-controller="favoritesController as favCtrl">
+      <h1>FAVORITES!</h1>
 
       <button ng-click="giphyCtrl.randomGIF()">Random!</button>
+      <table name="FavoriteGifsTable">
+        <thead>
+          <th>
+            URL
+          </th>
+          <th>
+            Comment
+          </th>
+        </thead>
+        <tbody>
+          <tr ng-repeat="gif in favCtrl.faveList">
+            <td>
+              <a href="{{gif.url}}" target="_blank">Gif</a>
+            </td>
+            <td>
+              {{gif.commentfield}}
+            </td>
+          </tr>
+        </tbody>
+      </table>
 
-      <form name="searchForm">
+      <!-- <form name="searchForm">
         <input type="text" ng-model="giphyCtrl.searchTerm" placeholder="search term" ng-focus="highlightSearch=true" ng-blur="highlightSearch=false" required/>
         <button ng-disabled="searchForm.$invalid" ng-click="giphyCtrl.searchGIF(giphyCtrl.searchTerm)" ng-class="{'highlightBad':highlightSearch==true && searchForm.$invalid,'highlightGood':highlightSearch==true && searchForm.$valid, 'normal':highlightSearch==false}">Search!</button>
       </form>
@@ -30,9 +50,9 @@
           <input type="text" ng-model="giphyCtrl.comment" placeholder="comment" ng-focus="highlightComment=true" ng-blur="highlightComment=false" required/>
           <button ng-disabled="favForm.$invalid" ng-click="giphyCtrl.favGIF(giphyCtrl.comment, giphyCtrl.imageURL)" ng-class="{'highlightBad':highlightComment==true && favForm.$invalid,'highlightGood':highlightComment==true && favForm.$valid, 'normal':highlightComment==false}">Favorite!</button>
         </form>
-      </p>
+      </p> -->
 
-      <a href="/favorites">Favorite Gifs!</a>
+      <a href="/index.html">Home!</a>
     </main>
   </body>
 </html>
